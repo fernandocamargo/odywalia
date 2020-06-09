@@ -1,2 +1,0 @@
-# odywalia
-Created with CodeSandbox
