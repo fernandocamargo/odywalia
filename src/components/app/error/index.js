@@ -1,7 +1,7 @@
-import { func, instanceOf, string } from "prop-types";
-import React from "react";
+import { func, instanceOf, string } from 'prop-types';
+import React from 'react';
 
-import withStyle from "./style";
+import withStyle from './style';
 
 export const Error = ({ error: { message }, className, retry }) => (
   <div className={className}>
@@ -13,7 +13,7 @@ export const Error = ({ error: { message }, className, retry }) => (
 Error.propTypes = {
   className: string.isRequired,
   error: instanceOf(window.Error).isRequired,
-  retry: func.isRequired
+  retry: func.isRequired,
 };
 
 Error.defaultProps = {};

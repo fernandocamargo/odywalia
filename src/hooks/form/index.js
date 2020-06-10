@@ -1,5 +1,5 @@
-import { createElement } from "react";
-import { useFormik } from "formik";
+import { createElement } from 'react';
+import { useFormik } from 'formik';
 
 export default settings => {
   const initialValues = settings.fields.reduce(
@@ -13,8 +13,8 @@ export default settings => {
         [name]: createElement(render, {
           value: formik.values[name],
           onChange: value => formik.setFieldValue(name, value),
-          ...custom
-        })
+          ...custom,
+        }),
       }),
     {}
   );

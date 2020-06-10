@@ -1,14 +1,20 @@
-import { number, shape, string } from "prop-types";
-import React from "react";
+import { shape, string } from 'prop-types';
+import React from 'react';
 
-import { useForm } from "./hooks";
-import withStyle from "./style";
+import { useForm } from './hooks';
+import withStyle from './style';
 
 export const Form = ({ className, data }) => {
   const {
-    fields: { "keep-logged-in": keepLoggedIn, name, email, password },
+    fields: {
+      'keep-logged-in': keepLoggedIn,
+      name,
+      email,
+      password,
+      subscriptions,
+    },
     values,
-    handleSubmit
+    handleSubmit,
   } = useForm(data);
 
   return (
@@ -35,7 +41,13 @@ export const Form = ({ className, data }) => {
       </dl>
       <dl>
         <dt>Preferences</dt>
-        <dd>{keepLoggedIn}</dd>
+        <dd>
+          {keepLoggedIn}
+          <dl>
+            <dt>Subscriptions</dt>
+            <dd>{subscriptions}</dd>
+          </dl>
+        </dd>
       </dl>
       <button type="submit">Submit</button>
     </form>
@@ -47,8 +59,8 @@ Form.propTypes = {
   data: shape({
     name: string.isRequired,
     email: string.isRequired,
-    password: number.isRequired
-  }).isRequired
+    password: string.isRequired,
+  }).isRequired,
 };
 
 Form.defaultProps = {};

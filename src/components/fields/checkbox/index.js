@@ -1,18 +1,23 @@
-import React, { useCallback, useMemo } from "react";
-import { Checkbox as Input, FormControlLabel } from "@material-ui/core";
+import castArray from 'lodash/castArray';
+import isEqual from 'lodash/isEqual';
+import React, { useCallback } from 'react';
 
-const Checkbox = ({ onChange: change, label, value }) => {
-  const checked = useMemo(() => !!value, [value]);
-  const onChange = useCallback(({ target: { checked } }) => change(checked), [
-    change
-  ]);
+import Option from './option';
 
-  return (
-    <FormControlLabel
-      control={<Input checked={checked} onChange={onChange} color="primary" />}
-      label={label}
-    />
+const Checkbox = ({ value: defaultValue, options, onChange }) => {
+  const isChecked = useCallback(
+    option =>
+      !!castArray(defaultValue).filter(item => isEqual(item, option)).length,
+    [defaultValue]
   );
+  const renderOption = useCallback(
+    (item, index) => {
+      return <Option key={index} {...item} isChecked={isChecked} />;
+    },
+    [isChecked]
+  );
+
+  return options ? options.map(renderOption) : null;
 };
 
 Checkbox.propTypes = {};

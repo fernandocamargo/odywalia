@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 
-import { useProfile } from "hooks/services";
+import { useProfile } from 'hooks/services';
 
-import Error from "./error";
-import Form from "./form";
+import Error from './error';
+import Form from './form';
 
 export const App = () => {
   const { fetch, loading, data, error } = useProfile();
@@ -20,9 +20,9 @@ export const App = () => {
     case !!error:
       return <Error error={error} retry={fetch} />;
     case loading:
-      return "Loading...";
+      return 'Loading...';
     default:
-      return "Idle";
+      return 'Idle';
   }
 };
 
