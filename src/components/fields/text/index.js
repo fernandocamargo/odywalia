@@ -2,7 +2,7 @@ import { func, number, oneOf, oneOfType, string } from 'prop-types';
 import React, { useCallback } from 'react';
 import { TextField } from '@material-ui/core';
 
-export const Input = ({ onChange: change, ...props }) => {
+export const Text = ({ onChange: change, ...props }) => {
   const onChange = useCallback(({ target: { value } }) => change(value), [
     change,
   ]);
@@ -10,15 +10,15 @@ export const Input = ({ onChange: change, ...props }) => {
   return <TextField fullWidth onChange={onChange} {...props} />;
 };
 
-Input.propTypes = {
+Text.propTypes = {
   type: oneOf(['text', 'email', 'password']),
   value: oneOfType([string, number]),
   onChange: func.isRequired,
 };
 
-Input.defaultProps = {
+Text.defaultProps = {
   type: 'text',
   value: '',
 };
 
-export default Input;
+export default Text;

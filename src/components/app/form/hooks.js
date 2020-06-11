@@ -1,5 +1,5 @@
 import { useForm as useFormGenerator } from 'hooks';
-import { Checkbox, Input } from 'components/fields';
+import { Checkbox, Text } from 'components/fields';
 
 export const useForm = ({
   'keep-me-logged-in': keepMeLoggedIn,
@@ -13,7 +13,7 @@ export const useForm = ({
       {
         name: 'name',
         value: name,
-        render: Input,
+        render: Text,
         settings: {
           id: 'name',
         },
@@ -21,7 +21,7 @@ export const useForm = ({
       {
         name: 'email',
         value: email,
-        render: Input,
+        render: Text,
         settings: {
           type: 'email',
           id: 'email',
@@ -30,7 +30,7 @@ export const useForm = ({
       {
         name: 'password',
         value: password,
-        render: Input,
+        render: Text,
         settings: {
           type: 'password',
           id: 'password',
