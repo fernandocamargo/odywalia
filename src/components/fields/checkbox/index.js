@@ -1,26 +1,19 @@
-import castArray from 'lodash/castArray';
-import isEqual from 'lodash/isEqual';
-import React, { useCallback } from 'react';
+import { arrayOf, shape } from 'prop-types';
+import { createElement, useMemo } from 'react';
 
-import Option from './option';
+import Multiple from './multiple';
+import Single from './single';
 
-const Checkbox = ({ value: defaultValue, options, onChange }) => {
-  const isChecked = useCallback(
-    option =>
-      !!castArray(defaultValue).filter(item => isEqual(item, option)).length,
-    [defaultValue]
-  );
-  const renderOption = useCallback(
-    (item, index) => {
-      return <Option key={index} {...item} isChecked={isChecked} />;
-    },
-    [isChecked]
-  );
+const Checkbox = props => {
+  const { options } = props;
+  const component = useMemo(() => (!options ? Single : Multiple), [options]);
 
-  return options ? options.map(renderOption) : null;
+  return createElement(component, props);
 };
 
-Checkbox.propTypes = {};
+Checkbox.propTypes = {
+  options: arrayOf(shape({})),
+};
 
 Checkbox.defaultProps = {};
 

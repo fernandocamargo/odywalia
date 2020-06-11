@@ -3,7 +3,7 @@ import { Checkbox, Input } from 'components/fields';
 
 export const useForm = ({
   'keep-me-logged-in': keepMeLoggedIn,
-  subscriptions = [{ type: 'weekly' }, 'monthly', [1, 2, 3]],
+  subscriptions = [],
   name,
   email,
   password,
@@ -36,7 +36,6 @@ export const useForm = ({
           id: 'password',
         },
       },
-      /*
       {
         name: 'keep-logged-in',
         value: keepMeLoggedIn,
@@ -45,7 +44,6 @@ export const useForm = ({
           label: 'Keep me logged in',
         },
       },
-      */
       {
         name: 'subscriptions',
         value: subscriptions,
@@ -53,9 +51,9 @@ export const useForm = ({
         settings: {
           options: [
             { label: 'Daily notifications', value: 'daily' },
-            { label: 'Weekly notifications', value: { type: 'weekly' } },
+            { label: 'Weekly notifications', value: 'weekly' },
             { label: 'Monthly notifications', value: 'monthly' },
-            { label: 'Yearly notifications', value: [1, 2, 3] },
+            { label: 'Yearly notifications', value: 'yearly' },
           ],
         },
       },

@@ -1,12 +1,10 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback } from 'react';
 import { Checkbox, FormControlLabel } from '@material-ui/core';
 
-const Option = ({ label, value, isChecked }) => {
-  const checked = useMemo(() => isChecked(value), [isChecked, value]);
-  const onChange = useCallback(
-    ({ target: { checked } }) => console.log({ checked }),
-    []
-  );
+const Option = ({ onChange: change, label, checked }) => {
+  const onChange = useCallback(({ target: { checked } }) => change(checked), [
+    change,
+  ]);
 
   return (
     <FormControlLabel
