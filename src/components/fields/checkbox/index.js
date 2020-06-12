@@ -1,18 +1,16 @@
-import { arrayOf, shape } from 'prop-types';
-import { createElement, useMemo } from 'react';
+import { any, arrayOf, bool, node, oneOfType, shape } from 'prop-types';
+import { createElement } from 'react';
 
 import Multiple from './multiple';
 import Single from './single';
 
-const Checkbox = props => {
-  const { options } = props;
-  const component = useMemo(() => (!options ? Single : Multiple), [options]);
-
-  return createElement(component, props);
-};
+const Checkbox = props =>
+  createElement(!props.options ? Single : Multiple, props);
 
 Checkbox.propTypes = {
-  options: arrayOf(shape({})),
+  value: oneOfType([arrayOf(any), bool]),
+  options: arrayOf(shape({ label: node, value: any.isRequired }).isRequired),
+  label: node,
 };
 
 Checkbox.defaultProps = {};

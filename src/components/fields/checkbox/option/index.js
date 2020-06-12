@@ -1,3 +1,4 @@
+import { bool, node, func } from 'prop-types';
 import React, { useCallback } from 'react';
 import { Checkbox, FormControlLabel } from '@material-ui/core';
 
@@ -16,8 +17,14 @@ const Option = ({ onChange: change, label, checked }) => {
   );
 };
 
-Option.propTypes = {};
+Option.propTypes = {
+  label: node,
+  checked: bool,
+  onChange: func.isRequired,
+};
 
-Option.defaultProps = {};
+Option.defaultProps = {
+  checked: false,
+};
 
 export default Option;

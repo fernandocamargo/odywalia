@@ -8,8 +8,6 @@ import Form from './form';
 export const App = () => {
   const { fetch, loading, data, error } = useProfile();
 
-  // on componentDidMount, we fetch
-  // our backend service
   useEffect(() => {
     fetch();
   }, [fetch]);
